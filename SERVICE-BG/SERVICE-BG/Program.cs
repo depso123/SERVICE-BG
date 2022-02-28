@@ -23,5 +23,6 @@ namespace SERVICE_BG
                     webBuilder.UseStartup<Startup>();
                 });
         //1
+        //2
     }
 }
