@@ -11,6 +11,7 @@ namespace SERVICE_BG.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            this.Database.EnsureCreated();
         }
     }
 }
