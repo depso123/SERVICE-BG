@@ -13,5 +13,6 @@ namespace SERVICE_BG.Entities
         public string LastName { get; set; }
 
         public string Address { get; set; }
+        public string FisrtName { get; internal set; }
     }
 }

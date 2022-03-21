@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SERVICE_BG.Entities;
+using SERVICE_BG.Models;
 
 namespace SERVICE_BG.Data
 {
@@ -14,5 +15,6 @@ namespace SERVICE_BG.Data
         {
             this.Database.EnsureCreated();
         }
+        public DbSet<SERVICE_BG.Models.ClientBindingAllViewModel> ClientBindingAllViewModel { get; set; }
     }
 }
