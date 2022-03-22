@@ -9,11 +9,11 @@ using SERVICE_BG.Models;
 
 namespace SERVICE_BG.Controllers
 {
-    public class ClientControler : Controller
+    public class ClientController : Controller
     {
         private readonly ApplicationDbContext context;
 
-        public ClientControler(ApplicationDbContext context)
+        public ClientController(ApplicationDbContext context)
         {
             this.context = context;
         }
