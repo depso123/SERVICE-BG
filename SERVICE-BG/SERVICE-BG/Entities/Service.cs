@@ -15,8 +15,10 @@ namespace SERVICE_BG.Entities
 
         public virtual Category  Category {get; set;}
 
-        public decimal Price { get; set; 
+        public decimal Price { get; set; }
+
         
-        }
+        
+        
     }
 }
