@@ -19,5 +19,7 @@ namespace SERVICE_BG.Entities
 
         public virtual ApplicationUser User { get; set; }
 
+        public string CarModel { get; set; }
+
     }
 }

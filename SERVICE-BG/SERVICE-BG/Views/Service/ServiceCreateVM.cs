@@ -1,14 +1,13 @@
-﻿using System;
+﻿using SERVICE_BG.Entities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SERVICE_BG.Entities
+namespace SERVICE_BG.Views.Service
 {
-    public class Service
+    public class ServiceCreateVM
     {
-        [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -19,11 +18,6 @@ namespace SERVICE_BG.Entities
 
         public decimal Price { get; set; }
 
-        public string Picture { get; set; }
-
-        public virtual IEnumerable<Order> Orders { get; set; } = new List<Order>();
-        
-        
-        
+       // public virtual IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }

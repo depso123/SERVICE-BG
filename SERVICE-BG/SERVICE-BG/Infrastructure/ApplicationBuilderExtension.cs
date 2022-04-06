@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using SERVICE_BG.Data;
 using SERVICE_BG.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ namespace SERVICE_BG.Infrastructure
 
             await RoleSeeder(services);
             await SeedAdministrator(services);
+
+            var data = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedCategory(data);
 
 
             return app;
@@ -55,13 +59,28 @@ namespace SERVICE_BG.Infrastructure
                 user.Email = "admin@admin.com";
 
                 var result = await userManager.CreateAsync
-                (user, "123!@#qweQWE");
+                (user, "123!@");
 
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
             }
+        }
+
+        private static void SeedCategory(ApplicationDbContext data)
+        {
+            if (data.Categories.Any())
+            {
+                return;
+            }
+            data.Categories.AddRange(new[]
+            {
+                new Category {Name="Repair"},
+                new Category {Name="Diagnostic"},
+               
+            });
+            data.SaveChanges();
         }
 
     }

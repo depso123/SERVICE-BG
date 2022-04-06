@@ -39,13 +39,17 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/Offers/Index">All</a>
-                                    
+                                    <a class="dropdown-item" href="/Services/Index">All</a>
+                                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                                    {
+                                        <a class="dropdown-item" href="/Services/Create">Add</a>
+                                    }
+
                                 </div>
                             </div>
                         </li>
 
-                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                        @*@if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="AllClients">Clients</a>
@@ -68,7 +72,7 @@
                                     </div>
                                 </div>
                             </li>
-                        }
+                        }*@
 
                     </ul>
                 </div>
