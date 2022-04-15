@@ -8,12 +8,13 @@ namespace SERVICE_BG.Models
 {
     public class OrderCreateBindingModel
     {
-        public int ProductId { get; set; }
+        public int ServiceId { get; set; }
         [Required]
         [Range(1, int.MaxValue)]
         [Display(Name = "Quantity")]
 
         public int Quantity { get; set; }
+        public string CarModel { get; set; }
 
 
     }

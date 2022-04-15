@@ -19,5 +19,6 @@ namespace SERVICE_BG.Data
         public DbSet<Category>Categories {get; set;}
         public DbSet<Service>Services { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<SERVICE_BG.Models.OrderListVM> OrderListVM { get; set; }
     }
 }

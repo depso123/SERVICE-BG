@@ -1,27 +1,28 @@
-﻿using System;
+﻿using SERVICE_BG.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SERVICE_BG.Entities
+namespace SERVICE_BG.Models
 {
-    public class Order
+    public class OrderListVM
     {
-        [Key]
+       // [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public DateTime OrderDate { get; set; }
 
         public int ServiceId { get; set; }
-
-        public virtual Service Service { get; set; }
+        [Display(Name = "Service")]
+        public string Service { get; set; }
 
         public string UserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public string  User { get; set; }
 
         public string CarModel { get; set; }
 
@@ -29,13 +30,8 @@ namespace SERVICE_BG.Entities
 
         public decimal Price { get; set; }
 
-        public decimal TotalPrice
-        {
-            get
-            {
-                return Quantity * Service.Price;
-            }
-        }
+
+        public decimal TotalPrice { get; set; }
 
     }
 }

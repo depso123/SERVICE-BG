@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SERVICE_BG.Data;
 using SERVICE_BG.Entities;
+using SERVICE_BG.Models;
 
 namespace SERVICE_BG.Controllers
 {
@@ -49,7 +50,19 @@ namespace SERVICE_BG.Controllers
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            return View();
+            var service = new Service();
+
+            service.Categories = _context.Categories
+              .Select(c => new CategoryPairVM()
+              {
+                  Id = c.Id,
+                  CategoryName = c.Name
+              })
+              .ToList();
+
+           
+            //ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name");
+            return View(service);
         }
 
         // POST: Services/Create

@@ -4,15 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SERVICE_BG.Entities
+namespace SERVICE_BG.Models
 {
-    public class Category
+    public class CategoryPairVM
     {
-        [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
 
-        public virtual IEnumerable<Service>Services { get; set; }
+        [Display(Name = "Category")]
+        public string CategoryName { get; set; }
     }
 }

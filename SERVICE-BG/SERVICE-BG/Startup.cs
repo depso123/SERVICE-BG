@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using SERVICE_BG.Entities;
 using SERVICE_BG.Infrastructure;
 
+
 namespace SERVICE_BG
 {
     public class Startup
@@ -29,9 +30,17 @@ namespace SERVICE_BG
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+           options.UseLazyLoadingProxies()
+           .UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
+            // services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -49,6 +58,7 @@ namespace SERVICE_BG
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredUniqueChars = 0;
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
